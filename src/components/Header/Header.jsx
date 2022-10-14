@@ -1,34 +1,7 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-const API_KEY = "3ZAJRdLdELwDgAdIk1W7T3DHNM3aSmoS"
+export const Header = ({currency}) => {
 
 
-export const Header = () => {
-    const {currency, setCurrency} = useState({});
-
-    var myHeaders = new Headers();
-    myHeaders.append("apikey", "3ZAJRdLdELwDgAdIk1W7T3DHNM3aSmoS");
-    
-    var requestOptions = {
-      method: 'GET',
-      redirect: 'follow',
-      headers: myHeaders
-    };
-
-    
-
-
-
-    useEffect(() => {
-        // fetch("https://api.apilayer.com/currency_data/live?source=UAH&currencies=USD,EUR", requestOptions)
-        // .then(response => response.text())
-        // .then(result => console.log(result))
-        // .catch(error => console.log('error', error));
-    })
-
-       
-        
-
+    const { quotes :{UAHUSD, UAHEUR }, timestamp} = currency; 
     return (
         <header>
             <div>
@@ -37,16 +10,19 @@ export const Header = () => {
                     <span>BEST CURRENCY</span>
                 </div>
           <div>
+            <span>exchange rate as of</span>
+            <span>{timestamp}</span>
+          </div>
             <div>
-                    <span>0.00</span>
+                    <span>{UAHUSD}</span>
                     <span>USD</span>
                 </div>
                 <div>
-                    <span>0.00</span>
+                    <span>{UAHEUR}</span>
                     <span>EUR</span>
                 </div>
             </div>
-            </div>
+     
         </header>
     )
 }
