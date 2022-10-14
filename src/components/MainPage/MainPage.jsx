@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
+import {useState } from "react";
 
-export const MainBody = ({currency}) => {
+export const MainBody = ({currencyUSD, currencyEUR}) => {
     const [quantity1, setQuantity1] = useState("");
     const [quantity2, setQuantity2] = useState("");
     const [currency1, setCurrency1] = useState("UAH");
     const [currency2, setCurrency2] = useState("UAH");
 
-    const { quotes :{UAHUSD, UAHEUR }, timestamp} = currency; 
+
 
     function changeQuantity (quantity) {
         return quantity*index(currency1+currency2)
@@ -29,17 +29,17 @@ const index = (string) => {
         case "EUREUR":
             return 1;
         case "UAHUSD":
-            return UAHUSD;
+            return currencyUSD;
         case "UAHEUR":
-            return UAHEUR;
+            return currencyEUR;
         case "USDUAH":
-            return 1/UAHUSD;
+            return 1/currencyUSD;
         case "EURUAH":
-            return 1/UAHEUR;
+            return 1/currencyEUR;
         case "USDEUR":
-            return UAHEUR/UAHUSD;
+            return currencyEUR/currencyUSD;
         case "EURUSD":
-            return UAHUSD/UAHEUR;
+            return currencyUSD/currencyEUR;
         default:
             return;
     }
@@ -87,8 +87,8 @@ const handleClick = () => {
     setCurrency1(currency2);
     setCurrency2(currency1);
 }
-
-
+// if (!currency) return
+// const {quotes} = currency; 
     return (
         <main>
             <div> 
