@@ -14,12 +14,12 @@ export const Header = ({currency}) => {
             <span>{timestamp}</span>
           </div>
             <div>
-                    <span>{UAHUSD}</span>
                     <span>USD</span>
+                    <span>{1/UAHUSD}</span>
                 </div>
                 <div>
-                    <span>{UAHEUR}</span>
                     <span>EUR</span>
+                    <span>{1/UAHEUR}</span>
                 </div>
             </div>
      

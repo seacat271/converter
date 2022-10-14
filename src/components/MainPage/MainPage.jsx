@@ -8,11 +8,6 @@ export const MainBody = ({currency}) => {
 
     const { quotes :{UAHUSD, UAHEUR }, timestamp} = currency; 
 
-
-
-
-
-
     function changeQuantity (quantity) {
         return quantity*index(currency1+currency2)
         
@@ -42,9 +37,9 @@ const index = (string) => {
         case "EURUAH":
             return 1/UAHEUR;
         case "USDEUR":
-            return UAHUSD/UAHEUR;
-        case "EURUSD":
             return UAHEUR/UAHUSD;
+        case "EURUSD":
+            return UAHUSD/UAHEUR;
         default:
             return;
     }
@@ -78,18 +73,20 @@ const index = (string) => {
 
             case "currency2":
             setCurrency2(value);
-            const index2 = currency1 + value 
+            const index2 = value + currency1; 
             setQuantity1(changeIndex(quantity2, index2))
-
-
-         
             break;
           default:
             return;
       }
     }
 
-
+const handleClick = () => {
+    setQuantity1(quantity2);
+    setQuantity2(quantity1);
+    setCurrency1(currency2);
+    setCurrency2(currency1);
+}
 
 
     return (
@@ -98,18 +95,18 @@ const index = (string) => {
                 <div>
                     <form>
                     <input name="quantity1" type="number" placeholder="Enter quantity" value={quantity1} onChange={handleInputChange}/>
-                    <select name="currency1" size="1" onChange={handleSelectChange}>
+                    <select name="currency1" size="1" onChange={handleSelectChange} value = {currency1}>
                         <option value="UAH" defaultValue={true}>UAH</option>
                         <option value="USD">USD</option>
                         <option value="EUR">EUR</option>
                     </select>
                     </form>
                 </div>
-                <button>Convert</button>
+                <button type = "button" onClick={handleClick} >Convert</button>
                 <div>
                     <form>
                     <input name="quantity2" type="number"  placeholder="Enter quantity" value={quantity2} onChange={handleInputChange}/>
-                    <select name="currency2" size="1" onChange={handleSelectChange}>
+                    <select name="currency2" size="1" onChange={handleSelectChange} value = {currency2}>
                         <option value="UAH" defaultValue={true}>UAH</option>
                         <option value="USD">USD</option>
                         <option value="EUR">EUR</option>
