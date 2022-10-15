@@ -14,6 +14,7 @@ align-items: center;
 padding: 20px;
 background-color: #cbdef4;
 box-shadow: 0px 0px 3px 3px grey;
+color: #1b222a;
 `
 
 export const Title = styled.h1`

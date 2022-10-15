@@ -1,4 +1,9 @@
-import {AppBar, Container} from "./AppBar.styled"
+import {AppBar, Container, SpanRight, Box, Logo, RefreshButton, SpanTitle, SpanTime} from "./AppBar.styled"
+import {BsCurrencyExchange} from 'react-icons/bs';
+import {IoLogoUsd, IoLogoEuro, IoMdRefresh} from 'react-icons/io';
+import {Loader} from '../../helpers/Loader'
+import { CurrencyTable } from "../CurrencyTable/CurrencyTable";
+
 
 function timeConverter(UNIX_timestamp){
     const a = new Date(UNIX_timestamp * 1000);
@@ -22,23 +27,28 @@ export const Header = ({currencyUSD, currencyEUR, timestamp, handleRefresh}) => 
     return (
         <AppBar>
             <Container>
-                <div>
-                    <span>SVG</span>
-                    <span>BEST CURRENCY</span>
-                </div>
-                <div>
-                    <span>USD</span>
-                    <span>{1/currencyUSD}</span>
-                </div>
-                <div>
-                    <span>EUR</span>
-                    <span>{1/currencyEUR}</span>
-                </div>
-          <div>
-            <span>exchange rate as of</span>
-            <span>{currencyTime}</span>
-            <button type="submit" onClick={handleRefresh}>Refresh</button>
-          </div>
+                <Box>
+                    <SpanRight>
+                    <BsCurrencyExchange size={32} fill="#ffffff" />
+                    </SpanRight>
+                    
+                    <Logo>BEST CURRENCY</Logo>
+                </Box>
+                <Box>
+                    <SpanRight><IoLogoUsd size={32} fill="#ffffff"/></SpanRight>
+                    <CurrencyTable value ={currencyUSD}/>
+                </Box>
+                <Box>
+                    <SpanRight><IoLogoEuro size={32} fill="#ffffff"/></SpanRight>
+                    <CurrencyTable value ={currencyEUR} />
+                </Box>
+          <Box>
+            <SpanRight>exchange rate as of:</SpanRight>
+            <SpanTime>{timestamp ? currencyTime : <Loader/>}</SpanTime>
+            <RefreshButton type="submit" onClick={handleRefresh}>
+                <IoMdRefresh size={32} fill="#80b5f2"/>
+                </RefreshButton>
+          </Box>
             </Container>
      
         </AppBar>

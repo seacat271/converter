@@ -1,6 +1,6 @@
 import {useState } from "react";
 import { Container, Title, MainBox, Input, Select, ConvertButton } from "./MainPage.styled";
-
+import { BiRefresh } from "react-icons/bi";
 export const MainBody = ({currencyUSD, currencyEUR}) => {
     const [quantity1, setQuantity1] = useState("");
     const [quantity2, setQuantity2] = useState("");
@@ -105,7 +105,7 @@ const handleClick = () => {
                     </Select>
                     </form>
                 </div>
-                <ConvertButton type = "button" onClick={handleClick} >Convert</ConvertButton>
+                <ConvertButton type = "button" onClick={handleClick} ><BiRefresh size={90} color="#1b222a"/></ConvertButton>
                 <div>
                     <form>
                     <Input name="quantity2" type="number"  placeholder="Enter quantity" value={quantity2} onChange={handleInputChange}/>
@@ -121,3 +121,4 @@ const handleClick = () => {
         </Container>
     )
 }
+

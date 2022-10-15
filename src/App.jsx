@@ -5,23 +5,23 @@ import { useEffect, useState } from "react";
 import {FetchCurrency} from "./helpers/FetchCurrency"
 
 
-// const example = {
-//     "success": true,
-//     "timestamp": 1665754684,
-//     "source": "UAH",
-//     "quotes": {
-//         "UAHUSD": 0.027066,
-//         "UAHEUR": 0.027761
-//     }
-// }
+const example = {
+    "success": true,
+    "timestamp": 1665754684,
+    "source": "UAH",
+    "quotes": {
+        "UAHUSD": 0.027066,
+        "UAHEUR": 0.027761
+    }
+}
 
 
     
 function App() {
 
-  const [timestamp, setTimestamp] = useState(0);
-  const [currencyUSD, setCurrencyUSD] = useState(0);
-  const [currencyEUR, setCurrencyEUR] = useState(0);
+  const [timestamp, setTimestamp] = useState(example.timestamp);
+  const [currencyUSD, setCurrencyUSD] = useState(example.quotes.UAHUSD);
+  const [currencyEUR, setCurrencyEUR] = useState(example.quotes.UAHEUR);
 
     useEffect( () => {
        FetchCurrency()
