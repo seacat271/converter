@@ -10,16 +10,16 @@ export const MainBody = ({currencyUSD, currencyEUR}) => {
 
 
     function changeQuantity (quantity) {
-        return quantity*index(currency1+currency2)
+        return (quantity*index(currency1+currency2)).toFixed(2)
         
         }
     
     function changeIndex (quantity, string) {
-            return quantity * index(string)
+            return (quantity * index(string)).toFixed(2)
             }
 
     function reverseChangeQuantity (quantity) {
-        return quantity*index(currency2+currency1)
+        return (quantity*index(currency2+currency1)).toFixed(2)
     }
 
 

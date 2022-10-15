@@ -5,7 +5,7 @@ return (<ThreeDots
 height="45" 
 width="45" 
 radius="9"
-color="#4fa94d" 
+color="#ffffff" 
 ariaLabel="three-dots-loading"
 wrapperStyle={{}}
 wrapperClassName=""

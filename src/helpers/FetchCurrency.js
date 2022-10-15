@@ -1,9 +1,5 @@
 import axios from "axios";
-const API_KEY = "3Gjef32inZbd2XheZ0TOaNlnZSq1RKcG"
-// "3ZAJRdLdELwDgAdIk1W7T3DHNM3aSmoS"
-const BASE_URL = "https://api.apilayer.com"
-
-
+import {API_KEY, BASE_URL} from './constants'
 
 axios.defaults.baseURL =BASE_URL;
 axios.defaults.headers.common.apikey = API_KEY;
@@ -16,4 +12,8 @@ const requestConfig = {
   },
 };
 
-export const FetchCurrency = () => axios.get("currency_data/live", requestConfig);
+export const FetchCurrency = dataStateUpdate => axios.get("currency_data/live", requestConfig)
+.then(({data}) => {
+  dataStateUpdate(data)
+ })
+ .catch (error => console.log('error', error)) ;

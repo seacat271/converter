@@ -45,7 +45,7 @@ export const Header = ({currencyUSD, currencyEUR, timestamp, handleRefresh}) => 
           <Box>
             <SpanRight>exchange rate as of:</SpanRight>
             <SpanTime>{timestamp ? currencyTime : <Loader/>}</SpanTime>
-            <RefreshButton type="submit" onClick={handleRefresh}>
+            <RefreshButton type="button" onClick={handleRefresh}>
                 <IoMdRefresh size={32} fill="#80b5f2"/>
                 </RefreshButton>
           </Box>

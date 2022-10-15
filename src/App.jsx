@@ -11,9 +11,10 @@ const example = {
     "source": "UAH",
     "quotes": {
         "UAHUSD": 0.027066,
-        "UAHEUR": 0.027761
+        // "UAHEUR": 0.027761
     }
 }
+
 
 
     
@@ -23,26 +24,29 @@ function App() {
   const [currencyUSD, setCurrencyUSD] = useState(example.quotes.UAHUSD);
   const [currencyEUR, setCurrencyEUR] = useState(example.quotes.UAHEUR);
 
+  const updateData = data => {
+    setTimestamp(data.timestamp); 
+    setCurrencyUSD(data.quotes.UAHUSD)
+    setCurrencyEUR(data.quotes.UAHEUR)
+  }
+
     useEffect( () => {
-       FetchCurrency()
-       .then(({data}) => {
-          setTimestamp(data.timestamp); 
-          setCurrencyUSD(data.quotes.UAHUSD)
-          setCurrencyEUR(data.quotes.UAHEUR)
-  
-       })
-       .catch (error => console.log('error', error)) 
+       FetchCurrency(updateData)
+      
 
     }, [])
 
-
+    const handleRefresh = () => {
+      // event.preventDefault()
+      FetchCurrency(updateData)
+    }
 
 
   return (
     <>
-        <Header currencyUSD={currencyUSD} currencyEUR={currencyEUR} timestamp={timestamp}/>
+        <Header currencyUSD={currencyUSD} currencyEUR={currencyEUR} timestamp={timestamp} handleRefresh = {handleRefresh}/>
 
-          <MainBody currencyUSD={currencyUSD} currencyEUR={currencyEUR}/>
+        <MainBody currencyUSD={currencyUSD} currencyEUR={currencyEUR} />
 
         
     </>
