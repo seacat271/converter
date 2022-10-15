@@ -105,7 +105,7 @@ const handleClick = () => {
                     </Select>
                     </form>
                 </div>
-                <ConvertButton type = "button" onClick={handleClick} ><BiRefresh size={90} color="#1b222a"/></ConvertButton>
+                <ConvertButton type = "button" onClick={handleClick} ><BiRefresh size={90} fill= "currentColor"/></ConvertButton>
                 <div>
                     <form>
                     <Input name="quantity2" type="number"  placeholder="Enter quantity" value={quantity2} onChange={handleInputChange}/>

@@ -58,4 +58,11 @@ box-shadow: 0px 0px 2px 2px grey;
 font-size: 26px;
 padding: 4px;
 background-color: #ffffff;
+transition: color 250ms linear, background-color 250ms linear;
+&:hover,
+&:focus {
+    color:  #ffffff;
+    background-color: #115fb9;
+    
+}
 `

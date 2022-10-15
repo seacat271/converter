@@ -1,4 +1,4 @@
-import {AppBar, Container, SpanRight, Box, Logo, RefreshButton, SpanTitle, SpanTime} from "./AppBar.styled"
+import {AppBar, Container, SpanRight, Box, Logo, RefreshButton, SpanTime, BoxLogo} from "./AppBar.styled"
 import {BsCurrencyExchange} from 'react-icons/bs';
 import {IoLogoUsd, IoLogoEuro, IoMdRefresh} from 'react-icons/io';
 import {Loader} from '../../helpers/Loader'
@@ -27,13 +27,13 @@ export const Header = ({currencyUSD, currencyEUR, timestamp, handleRefresh}) => 
     return (
         <AppBar>
             <Container>
-                <Box>
+                <BoxLogo>
                     <SpanRight>
-                    <BsCurrencyExchange size={32} fill="#ffffff" />
+                    <BsCurrencyExchange size={32} fill="currentColor" />
                     </SpanRight>
                     
                     <Logo>BEST CURRENCY</Logo>
-                </Box>
+                </BoxLogo>
                 <Box>
                     <SpanRight><IoLogoUsd size={32} fill="#ffffff"/></SpanRight>
                     <CurrencyTable value ={currencyUSD}/>
@@ -46,7 +46,7 @@ export const Header = ({currencyUSD, currencyEUR, timestamp, handleRefresh}) => 
             <SpanRight>exchange rate as of:</SpanRight>
             <SpanTime>{timestamp ? currencyTime : <Loader/>}</SpanTime>
             <RefreshButton type="button" onClick={handleRefresh}>
-                <IoMdRefresh size={32} fill="#80b5f2"/>
+                <IoMdRefresh size={32} fill="currentColor"/>
                 </RefreshButton>
           </Box>
             </Container>
