@@ -1,43 +1,29 @@
 import { Header } from './components/AppBar/AppBar';
 import {MainBody} from './components/MainPage/MainPage';
-
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useEffect, useState } from "react";
 import {FetchCurrency} from "./helpers/FetchCurrency"
+import { greeting } from './helpers/notify';
 
 
-const example = {
-    "success": true,
-    "timestamp": 1665754684,
-    "source": "UAH",
-    "quotes": {
-        "UAHUSD": 0.027066,
-        // "UAHEUR": 0.027761
-    }
-}
-
-
-
-    
 function App() {
 
-  const [timestamp, setTimestamp] = useState(example.timestamp);
-  const [currencyUSD, setCurrencyUSD] = useState(example.quotes.UAHUSD);
-  const [currencyEUR, setCurrencyEUR] = useState(example.quotes.UAHEUR);
+  const [timestamp, setTimestamp] = useState(0);
+  const [currencyUSD, setCurrencyUSD] = useState(0);
+  const [currencyEUR, setCurrencyEUR] = useState(0);
 
   const updateData = data => {
     setTimestamp(data.timestamp); 
     setCurrencyUSD(data.quotes.UAHUSD)
     setCurrencyEUR(data.quotes.UAHEUR)
   }
-
     useEffect( () => {
+      greeting()
        FetchCurrency(updateData)
-      
-
     }, [])
 
     const handleRefresh = () => {
-      // event.preventDefault()
       FetchCurrency(updateData)
     }
 
@@ -45,10 +31,8 @@ function App() {
   return (
     <>
         <Header currencyUSD={currencyUSD} currencyEUR={currencyEUR} timestamp={timestamp} handleRefresh = {handleRefresh}/>
-
         <MainBody currencyUSD={currencyUSD} currencyEUR={currencyEUR} />
-
-        
+        <ToastContainer/>
     </>
   );
 }

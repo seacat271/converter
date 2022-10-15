@@ -19,9 +19,6 @@ function timeConverter(UNIX_timestamp){
 
 
 export const Header = ({currencyUSD, currencyEUR, timestamp, handleRefresh}) => {
-    // if (!currency) return 
-  
-
 
     const currencyTime = timeConverter(timestamp)
     return (
@@ -31,7 +28,6 @@ export const Header = ({currencyUSD, currencyEUR, timestamp, handleRefresh}) => 
                     <SpanRight>
                     <BsCurrencyExchange size={32} fill="currentColor" />
                     </SpanRight>
-                    
                     <Logo>BEST CURRENCY</Logo>
                 </BoxLogo>
                 <Box>
@@ -54,3 +50,4 @@ export const Header = ({currencyUSD, currencyEUR, timestamp, handleRefresh}) => 
         </AppBar>
     )
 }
+

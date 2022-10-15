@@ -1,17 +1,15 @@
 import {useState } from "react";
 import { Container, Title, MainBox, Input, Select, ConvertButton } from "./MainPage.styled";
 import { BiRefresh } from "react-icons/bi";
+
 export const MainBody = ({currencyUSD, currencyEUR}) => {
     const [quantity1, setQuantity1] = useState("");
     const [quantity2, setQuantity2] = useState("");
     const [currency1, setCurrency1] = useState("UAH");
     const [currency2, setCurrency2] = useState("UAH");
 
-
-
     function changeQuantity (quantity) {
         return (quantity*index(currency1+currency2)).toFixed(2)
-        
         }
     
     function changeIndex (quantity, string) {
@@ -22,13 +20,8 @@ export const MainBody = ({currencyUSD, currencyEUR}) => {
         return (quantity*index(currency2+currency1)).toFixed(2)
     }
 
-
-const index = (string) => {
+const index = string => {
     switch (string) {
-        case "UAHUAH":
-        case "USDUSD":
-        case "EUREUR":
-            return 1;
         case "UAHUSD":
             return currencyUSD;
         case "UAHEUR":
@@ -88,8 +81,6 @@ const handleClick = () => {
     setCurrency1(currency2);
     setCurrency2(currency1);
 }
-// if (!currency) return
-// const {quotes} = currency; 
 
     return (
         <Container>

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { error as errorNotify } from "./notify";
 import {API_KEY, BASE_URL} from './constants'
 
 axios.defaults.baseURL =BASE_URL;
@@ -16,4 +17,6 @@ export const FetchCurrency = dataStateUpdate => axios.get("currency_data/live", 
 .then(({data}) => {
   dataStateUpdate(data)
  })
- .catch (error => console.log('error', error)) ;
+ .catch (error => {
+  errorNotify(error.message)
+}) ;
