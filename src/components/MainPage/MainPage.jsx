@@ -1,4 +1,5 @@
 import {useState } from "react";
+import { Container, Title, MainBox, Input, Select, ConvertButton } from "./MainPage.styled";
 
 export const MainBody = ({currencyUSD, currencyEUR}) => {
     const [quantity1, setQuantity1] = useState("");
@@ -41,7 +42,7 @@ const index = (string) => {
         case "EURUSD":
             return currencyUSD/currencyEUR;
         default:
-            return;
+            return 1;
     }
 } ;
 
@@ -89,32 +90,34 @@ const handleClick = () => {
 }
 // if (!currency) return
 // const {quotes} = currency; 
-    return (
-        <main>
-            <div> 
-                <div>
-                    <form>
-                    <input name="quantity1" type="number" placeholder="Enter quantity" value={quantity1} onChange={handleInputChange}/>
-                    <select name="currency1" size="1" onChange={handleSelectChange} value = {currency1}>
-                        <option value="UAH" defaultValue={true}>UAH</option>
-                        <option value="USD">USD</option>
-                        <option value="EUR">EUR</option>
-                    </select>
-                    </form>
-                </div>
-                <button type = "button" onClick={handleClick} >Convert</button>
-                <div>
-                    <form>
-                    <input name="quantity2" type="number"  placeholder="Enter quantity" value={quantity2} onChange={handleInputChange}/>
-                    <select name="currency2" size="1" onChange={handleSelectChange} value = {currency2}>
-                        <option value="UAH" defaultValue={true}>UAH</option>
-                        <option value="USD">USD</option>
-                        <option value="EUR">EUR</option>
-                    </select>
-                    </form>
-                </div>
-            </div>
 
-        </main>
+    return (
+        <Container>
+            <Title>Currency exchange</Title>
+            <MainBox> 
+                <div>
+                    <form>
+                    <Input name="quantity1" type="number" placeholder="Enter quantity" value={quantity1} onChange={handleInputChange}/>
+                    <Select name="currency1" size="1" onChange={handleSelectChange} value = {currency1}>
+                        <option value="UAH" defaultValue={true}>UAH</option>
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                    </Select>
+                    </form>
+                </div>
+                <ConvertButton type = "button" onClick={handleClick} >Convert</ConvertButton>
+                <div>
+                    <form>
+                    <Input name="quantity2" type="number"  placeholder="Enter quantity" value={quantity2} onChange={handleInputChange}/>
+                    <Select name="currency2" size="1" onChange={handleSelectChange} value = {currency2}>
+                        <option value="UAH" defaultValue={true}>UAH</option>
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                    </Select>
+                    </form>
+                </div>
+            </MainBox>
+
+        </Container>
     )
 }

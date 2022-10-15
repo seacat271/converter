@@ -1,4 +1,4 @@
-
+import {AppBar, Container} from "./AppBar.styled"
 
 function timeConverter(UNIX_timestamp){
     const a = new Date(UNIX_timestamp * 1000);
@@ -20,18 +20,13 @@ export const Header = ({currencyUSD, currencyEUR, timestamp, handleRefresh}) => 
 
     const currencyTime = timeConverter(timestamp)
     return (
-        <header>
-            <div>
+        <AppBar>
+            <Container>
                 <div>
                     <span>SVG</span>
                     <span>BEST CURRENCY</span>
                 </div>
-          <div>
-            <span>exchange rate as of</span>
-            <span>{currencyTime}</span>
-            <button type="submit" onClick={handleRefresh}>Refresh</button>
-          </div>
-            <div>
+                <div>
                     <span>USD</span>
                     <span>{1/currencyUSD}</span>
                 </div>
@@ -39,8 +34,13 @@ export const Header = ({currencyUSD, currencyEUR, timestamp, handleRefresh}) => 
                     <span>EUR</span>
                     <span>{1/currencyEUR}</span>
                 </div>
-            </div>
+          <div>
+            <span>exchange rate as of</span>
+            <span>{currencyTime}</span>
+            <button type="submit" onClick={handleRefresh}>Refresh</button>
+          </div>
+            </Container>
      
-        </header>
+        </AppBar>
     )
 }

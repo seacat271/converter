@@ -1,6 +1,6 @@
-import { Header } from './components/Header/Header';
+import { Header } from './components/AppBar/AppBar';
 import {MainBody} from './components/MainPage/MainPage';
-import './App.css';
+
 import { useEffect, useState } from "react";
 import {FetchCurrency} from "./helpers/FetchCurrency"
 
@@ -39,10 +39,13 @@ function App() {
 
 
   return (
-    <div className="App">
+    <>
         <Header currencyUSD={currencyUSD} currencyEUR={currencyEUR} timestamp={timestamp}/>
-        <MainBody currencyUSD={currencyUSD} currencyEUR={currencyEUR}/>
-    </div>
+
+          <MainBody currencyUSD={currencyUSD} currencyEUR={currencyEUR}/>
+
+        
+    </>
   );
 }
 
